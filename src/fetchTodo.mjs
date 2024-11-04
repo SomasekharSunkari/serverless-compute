@@ -8,7 +8,7 @@ export const fetchTodo = async (event) => {
         const data = await dynamodb.get({ TableName: "Todotable", Key: { id } }).promise();
         return {
             statusCode: 200,
-            body: data
+            body: JSON.stringify(data)
         };
     } catch (err) {
         console.error(`Error happened at ${err.message}`);

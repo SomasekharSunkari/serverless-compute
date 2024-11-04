@@ -29,7 +29,7 @@ export const addTodo = async (event) => {
 
     return {
       statusCode: 200,
-      body: newTodo
+      body: JSON.stringify(newTodo)
     };
   } catch (err) {
     console.error(`Error occurred: ${err.message}`);

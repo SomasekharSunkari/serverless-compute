@@ -1,13 +1,13 @@
 import AWS from 'aws-sdk';
 
-export const fetcTodos = async (event) => {
+export const fetchTodos = async (event) => {
     try {
         const dynamodb = new AWS.DynamoDB.DocumentClient();
 
         const data = await dynamodb.scan({ TableName: "Todotable" }).promise();
         return {
             statusCode: 200,
-            body: data
+            body: JSON.stringify(data)
         };
     } catch (err) {
         console.error(`Error happened at ${err.message}`);
