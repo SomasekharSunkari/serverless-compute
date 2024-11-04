@@ -15,11 +15,17 @@ provider:
 
 functions:
   addTodo:
-    handler: src/addTodo.handler
+    handler: src/addTodo.addTodo
     events:
       - httpApi:
           path: /addtodo
           method: post
+  fetchTodos:
+    handler: src/fetchTodos.fetchTodos
+    events:
+      - httpApi:
+          path: /todos
+          method: get
 #infrastrcture provisoing
 resources:
   Resources:
