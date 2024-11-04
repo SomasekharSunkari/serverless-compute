@@ -1,9 +1,10 @@
 import { v4 } from "uuid";
 import AWS from 'aws-sdk';
-
-export const addTodo = async (event) => {
+import middy from '@middy/core';
+import { httpJsonBodyParser } from '@middy/http-json-body-parser';
+const addTodoHandeler = async (event) => {
   try {
-    const { todo } = JSON.parse(event.body);
+    const { todo } = event.body;
     console.log(todo);
 
     const dynamodb = new AWS.DynamoDB.DocumentClient();
@@ -40,3 +41,5 @@ export const addTodo = async (event) => {
     };
   }
 };
+
+export const addTodo = middy(addTodoHandeler).use(httpJsonBodyParser())
