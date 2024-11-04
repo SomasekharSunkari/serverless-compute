@@ -26,6 +26,9 @@ const addTodo = async (event) => {
   }
   catch (err) {
     console.log(`Error happend at ${err.message}`)
+    return {
+      message: "Error happend"
+    }
   }
 
 };
